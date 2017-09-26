@@ -18,6 +18,9 @@ public class Game {
                 newLine.setCharAt(i, c);
                 newValue = newLine.toString();
             }
+            else {
+                newValue = newLine.toString();
+            }
         }
         System.out.println(newValue);
         return newValue;

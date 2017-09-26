@@ -14,12 +14,9 @@ public class Game {
         StringBuilder newLine = new StringBuilder(randomLineUnderscore);
         String newValue = "";
         for(int i = 0; i < randomLine.length();i++) {
-            if (i == randomLine.indexOf(c)) {
+            if(randomLine.charAt(i) == c) {
                 newLine.setCharAt(i, c);
                 newValue = newLine.toString();
-            }
-            else {
-                newValue = randomLineUnderscore;
             }
         }
         System.out.println(newValue);

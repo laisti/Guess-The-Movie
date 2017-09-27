@@ -20,22 +20,19 @@ public class GuessMovie extends Game{
         System.out.println(randomLineUnderscore);
         int count = 0;
 
-        if (!randomLineUnderscore.contains("_")) {
-            System.out.println("You win!");
-        }
-        else {
-            while (randomLineUnderscore.contains("_")) {
-                    if (count < 10) {
-                        String newCharacter = Game.userInput();
-                        randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
-                        count = Game.countGuesses(randomLineUnderscore, newCharacter);
-                        if (!randomLineUnderscore.contains("_")) {
-                            System.out.println("You win!");
-                        }
-                    } else {
-                        System.out.println("You lost!");
-                        break;
-                    }
+        while (randomLineUnderscore.contains("_")) {
+            if (count < 10) {
+                String newCharacter = Game.userInput();
+                randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
+                if (!randomLineUnderscore.contains("_")) {
+                    System.out.println("You win!");
+                }
+                else {
+                    count = Game.countGuesses(randomLineUnderscore, newCharacter);
+                }
+            } else {
+                System.out.println("You lost!");
+                break;
             }
         }
     }

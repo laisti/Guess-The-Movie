@@ -25,4 +25,15 @@ public class Game {
         System.out.println(newValue);
         return newValue;
     }
+
+    static int count = 0;
+    public static int countGuesses(String newValue, String userInput) {
+        if (count < 10) {
+            if (!newValue.contains(userInput)) {
+                count++;
+            }
+        }
+        System.out.println("You have " + count + "wrong guesses");
+        return count;
+    }
 }

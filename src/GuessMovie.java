@@ -18,10 +18,18 @@ public class GuessMovie extends Game{
         String randomLine = lines.get(r.nextInt(lines.size()));
         String randomLineUnderscore = randomLine.replaceAll("[a-zA-Z]", "_");
         System.out.println(randomLineUnderscore);
+        int count = 0;
 
         while (randomLineUnderscore.contains("_")) {
-            String newCharacter = Game.userInput();
-            randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
+            if (count < 10) {
+                String newCharacter = Game.userInput();
+                randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
+                count = Game.countGuesses(randomLineUnderscore, newCharacter);
+            }
+            else {
+                System.out.println("You lost!");
+                break;
+            }
         }
     }
 }

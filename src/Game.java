@@ -1,12 +1,20 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Game {
+
 
     public static String userInput() {
         System.out.println("Input a character:");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         return userInput;
+    }
+
+    public static ArrayList addUserInput(String userInput) {
+        ArrayList<String> inputList = new ArrayList<String>();
+        inputList.add(userInput);
+        return inputList;
     }
 
     public static String searchCharacter(String randomLine, String userInput, String randomLineUnderscore) {

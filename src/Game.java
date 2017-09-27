@@ -33,7 +33,7 @@ public class Game {
                 count++;
             }
         }
-        System.out.println("You have " + count + "wrong guesses");
+        System.out.println("You have " + count + " wrong guesses");
         return count;
     }
 }

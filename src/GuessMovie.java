@@ -23,14 +23,18 @@ public class GuessMovie extends Game{
         while (randomLineUnderscore.contains("_")) {
             if (count < 10) {
                 String newCharacter = Game.userInput();
-                randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
-                if (!randomLineUnderscore.contains("_")) {
-                    System.out.println("You win!");
+                if (newCharacter.length() == 1) {
+                    randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
+                    if (!randomLineUnderscore.contains("_")) {
+                        System.out.println("You win!");
+                    } else {
+                        count = Game.countGuesses(randomLineUnderscore, newCharacter);
+                        ArrayList userInputCollection = Game.addUserInput(newCharacter);
+                    }
                 }
                 else {
-                    count = Game.countGuesses(randomLineUnderscore, newCharacter);
-                    ArrayList userInputCollection = Game.addUserInput(newCharacter);
-                    System.out.println(userInputCollection);
+                    System.out.println("You may input ONLY one character.");
+                    System.out.println(randomLineUnderscore);
                 }
             } else {
                 System.out.println("You lost!");

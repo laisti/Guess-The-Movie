@@ -1,31 +1,28 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game {
 
-
-    public static String userInput() {
+    static String userInput() {
         System.out.println("Input a character:");
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-        return userInput;
+        return scanner.nextLine();
     }
 
-    static ArrayList<String> inputList = new ArrayList<String>();
-    public static ArrayList addUserInput(String userInput) {
+    private static ArrayList<String> inputList = new ArrayList<String>();
+    static void addUserInput(String userInput) {
         if (!inputList.contains(userInput)) {
             inputList.add(userInput);
         }
-        return inputList;
     }
 
-    public static String searchCharacter(String randomLine, String userInput, String randomLineUnderscore) {
-        char c = userInput.charAt(0);
+    static String searchCharacter(String randomLine, String userInput, String randomLineUnderscore) {
+        char character = userInput.charAt(0);
         StringBuilder newLine = new StringBuilder(randomLineUnderscore);
         String newValue = "";
         for(int i = 0; i < randomLine.length();i++) {
-            if(randomLine.charAt(i) == c) {
-                newLine.setCharAt(i, c);
+            if(randomLine.charAt(i) == character) {
+                newLine.setCharAt(i, character);
                 newValue = newLine.toString();
             }
             else {
@@ -36,14 +33,14 @@ public class Game {
         return newValue;
     }
 
-    static int count = 0;
-    public static int countGuesses(String newValue, String userInput) {
-        if (count < 10) {
+    private static int countOfWrongGuesses = 0;
+    static int countGuesses(String newValue, String userInput) {
+        if (countOfWrongGuesses < 10) {
             if (!newValue.contains(userInput) && !inputList.contains(userInput)) {
-                count++;
+                countOfWrongGuesses++;
             }
         }
-        System.out.println("You have " + count + " wrong guesses");
-        return count;
+        System.out.println("You have " + countOfWrongGuesses + " wrong guesses");
+        return countOfWrongGuesses;
     }
 }

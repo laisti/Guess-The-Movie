@@ -1,6 +1,6 @@
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,18 +18,19 @@ public class GuessMovie extends Game{
         String randomLine = lines.get(r.nextInt(lines.size()));
         String randomLineUnderscore = randomLine.replaceAll("[a-zA-Z]", "_");
         System.out.println(randomLineUnderscore);
-        int count = 0;
+
+        int countOfWrongGuesses = 0;
 
         while (randomLineUnderscore.contains("_")) {
-            if (count < 10) {
+            if (countOfWrongGuesses < 10) {
                 String newCharacter = Game.userInput();
                 if (newCharacter.length() == 1) {
                     randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
                     if (!randomLineUnderscore.contains("_")) {
                         System.out.println("You win!");
                     } else {
-                        count = Game.countGuesses(randomLineUnderscore, newCharacter);
-                        ArrayList userInputCollection = Game.addUserInput(newCharacter);
+                        countOfWrongGuesses = Game.countGuesses(randomLineUnderscore, newCharacter);
+                        Game.addUserInput(newCharacter);
                     }
                 }
                 else {

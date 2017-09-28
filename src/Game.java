@@ -11,9 +11,11 @@ public class Game {
         return userInput;
     }
 
+    static ArrayList<String> inputList = new ArrayList<String>();
     public static ArrayList addUserInput(String userInput) {
-        ArrayList<String> inputList = new ArrayList<String>();
-        inputList.add(userInput);
+        if (!inputList.contains(userInput)) {
+            inputList.add(userInput);
+        }
         return inputList;
     }
 
@@ -37,7 +39,7 @@ public class Game {
     static int count = 0;
     public static int countGuesses(String newValue, String userInput) {
         if (count < 10) {
-            if (!newValue.contains(userInput)) {
+            if (!newValue.contains(userInput) && !inputList.contains(userInput)) {
                 count++;
             }
         }

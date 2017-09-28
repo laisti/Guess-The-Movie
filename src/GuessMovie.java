@@ -23,14 +23,14 @@ public class GuessMovie extends Game{
         while (randomLineUnderscore.contains("_")) {
             if (count < 10) {
                 String newCharacter = Game.userInput();
-                ArrayList userInputCollection = Game.addUserInput(newCharacter);
-                System.out.println(userInputCollection);
                 randomLineUnderscore = Game.searchCharacter(randomLine, newCharacter, randomLineUnderscore);
                 if (!randomLineUnderscore.contains("_")) {
                     System.out.println("You win!");
                 }
                 else {
                     count = Game.countGuesses(randomLineUnderscore, newCharacter);
+                    ArrayList userInputCollection = Game.addUserInput(newCharacter);
+                    System.out.println(userInputCollection);
                 }
             } else {
                 System.out.println("You lost!");

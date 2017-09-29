@@ -1,3 +1,15 @@
+/**
+ * <h1>Guess Movie Name!</h1>
+ * The GuessMovie program implements an application that
+ * chooses movie from .txt file randomly, hides the name of a movie
+ * and shows characters on the screen if user inputs character which
+ * is in this name.
+ *
+ * @author  Laima Stinskaite
+ * @version 1.0
+ * @since   2017-09-29
+ */
+
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,7 +18,15 @@ import java.util.Random;
 
 public class GuessMovie extends Game{
 
+    /**
+     * This is the main method which extends Game class.
+     * @param args Unused.
+     * @return Nothing.
+     * @exception Exception On input error.
+     * @see Exception
+     */
     public static void main(String [] args) throws Exception {
+        // Reads every line in .txt file and selects random one
         BufferedReader reader = new BufferedReader(new FileReader("movies.txt"));
         String line = reader.readLine();
         List<String> lines = new ArrayList<String>();
@@ -21,6 +41,7 @@ public class GuessMovie extends Game{
 
         int countOfWrongGuesses = 0;
 
+        // Main logic of the Game
         while (randomLineUnderscore.contains("_")) {
             if (countOfWrongGuesses < 10) {
                 String newCharacter = Game.userInput();
